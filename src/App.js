@@ -54,7 +54,8 @@ class App extends React.Component {
   addTodo = event => {
     event.preventDefault();
     this.setState({
-      todo: [...this.state.todo, {task: this.state.inputText, id: Date.now(), completed: false}]
+      todo: [...this.state.todo, {task: this.state.inputText, id: Date.now(), completed: false}],
+      inputText: ''
     });
 
   };
