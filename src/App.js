@@ -57,8 +57,11 @@ class App extends React.Component {
       todo: [...this.state.todo, {task: this.state.inputText, id: Date.now(), completed: false}],
       inputText: ''
     });
-
   };
+
+  clearCompleted = event => {
+    event.preventDefault();
+  }
 
   render() {
     return (
@@ -68,6 +71,7 @@ class App extends React.Component {
         inputText={this.state.inputText} 
         handleChange={this.handleChange}
         addTodo={this.addTodo}
+        clearCompleted={this.clearCompleted}
         />
       </div>
     );
