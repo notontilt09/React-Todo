@@ -1,4 +1,5 @@
 import React from 'react';
+import './Todo.css'
 
 const TodoForm = props => {
     return (
@@ -7,12 +8,14 @@ const TodoForm = props => {
                 <input
                     type="text"
                     name="inputText"
+                    className="user-input"
                     placeholder="Add new todo item"
+                    autoComplete='off'
                     value={props.inputText}
                     onChange={props.handleChange}
                 />
-                <button onClick={props.addTodo}>Add Todo Item</button>
-                <button onClick={props.clearCompleted}>Clear Completed</button>
+                <button className='input-btn' onClick={props.addTodo}>Add Todo Item</button>
+                <button className='input-btn' onClick={props.clearCompleted}>Clear Completed</button>
             </form>
         </div>
     );

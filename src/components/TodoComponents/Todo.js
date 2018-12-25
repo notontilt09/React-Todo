@@ -1,8 +1,9 @@
 import React from 'react';
+import './Todo.css'
 
 const Todo = props => {
     return (
-        <h2>{props.taskItem.task}</h2>
+        <div className="task-item">{props.taskItem.task}</div>
     )
 };
 

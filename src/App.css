@@ -1,0 +1,13 @@
+body {
+    background: lightgrey;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.App {
+    text-align: center;
+    width: 30%;
+    margin: 0 auto;
+}

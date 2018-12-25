@@ -3,16 +3,18 @@
 
 import React from 'react';
 import Todo from './Todo';
+import './Todo.css'
 
 const TodoList = props => {
     return (
-        <div>
-            {props.list.map(item => (
+        <section className="todo-list">
+            <h2>Todo List:</h2>
+            {props.list.map(taskItem => (
                 <Todo 
-                key={item.task}
-                taskItem={item} />
+                key={taskItem.task}
+                taskItem={taskItem} />
             ))}
-        </div>
+        </section>
     );
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoList from './components/TodoComponents/TodoList'
 import TodoForm from './components/TodoComponents/TodoForm'
-
+import './App.css'
 
 const todoData = [
   {
@@ -65,7 +65,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="App">
         <TodoList list={this.state.todo} />
         <TodoForm 
         inputText={this.state.inputText} 
