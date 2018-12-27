@@ -4,23 +4,44 @@
     border-radius: 5px;
     margin: 5px auto;
     font-size: 30px;
-    background: black;
-    color: white;
+    background: white;
+    color: black;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
 }
 
-.task-item.true {
+.task-item h3 {
+    padding-left: 10px;
+}
+
+.task-item.true h3 {
     text-decoration: line-through;
+    color: darkred;
+}
+
+.task-item.false h3 {
+    color: green;
 }
 
 .todo-list {
     margin: 30px 0 0px 0;
 }
 
-.todo-list h2 {
-    font-size: 40px;
-    margin-bottom: 20px;
-    color: darkorange;
+.task-item h2 {
+    font-size: 24px;
+    color: black;
+    font-weight: bold;
+    margin: 5px;
 }
+
+.task-item h3 {
+    font-size: 24px;
+    color: darkred;
+    margin: 5px;
+}
+
+
 
 .user-input {
     width: 100%;
@@ -38,4 +59,10 @@
     width: 50%;
     font-size: 20px;
     border-radius: 5px;
+}
+
+.form h2 {
+    font-size: 48px;
+    margin-bottom: 0px;
+    color: darkred;
 }

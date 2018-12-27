@@ -3,7 +3,8 @@ import './Todo.css'
 
 const TodoForm = props => {
     return (
-        <div>
+        <div className="form">
+            <h2>todos</h2>
             <form>
                 <input
                     type="text"

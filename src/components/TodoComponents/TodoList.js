@@ -8,7 +8,6 @@ import './Todo.css'
 const TodoList = props => {
     return (
         <section className="todo-list">
-            <h2>Todo List:</h2>
             {props.list.map(taskItem => (
                 <Todo 
                 key={taskItem.task}
