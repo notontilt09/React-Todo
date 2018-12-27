@@ -13,15 +13,37 @@ class App extends React.Component {
     super();
     this.state = {
       todo: todoData,
-      inputText: ''
+      inputText: '',
+      searchText: ''
     };
   };
+
+  updateNumbers = () => {
+    this.setState(
+      prevState => ({todo: prevState.todo.map(task => {
+        return {...task, number: prevState.todo.indexOf(task) + 1}})
+      })
+  )}
 
   handleChange = event => {
     this.setState({
       inputText: event.target.value
     });
   };
+
+  handleSearch = event => {
+    this.setState({
+      searchText: event.target.value,
+    });
+    this.filterTasks();
+  }
+
+  filterTasks = () => {
+    this.setState( 
+      prevState => ({todo: prevState.todo.filter(task => task.task.indexOf(prevState.searchText) > -1)})
+    )
+    this.updateNumbers();
+  }
 
   addTodo = event => {
     event.preventDefault();
@@ -53,11 +75,7 @@ class App extends React.Component {
     this.setState(
       prevState => ({todo: prevState.todo.filter(task => !task.completed)})
     )
-    this.setState(
-      prevState => ({todo: prevState.todo.map(task => {
-        return {...task, number: prevState.todo.indexOf(task) + 1}})
-      })
-    )
+    this.updateNumbers();
   }
 
   render() {
@@ -68,6 +86,8 @@ class App extends React.Component {
         handleChange={this.handleChange}
         addTodo={this.addTodo}
         clearCompleted={this.clearCompleted}
+        handleSearch={this.handleSearch}
+        searchText={this.searchText}
         />
         <TodoList list={this.state.todo} toggleCompleted={this.toggleCompleted}/>
       </div>

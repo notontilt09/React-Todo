@@ -15,6 +15,15 @@ const TodoForm = props => {
                     value={props.inputText}
                     onChange={props.handleChange}
                 />
+                <input
+                    type="text"
+                    name="searchText"
+                    className="search"
+                    placeholder="search items"
+                    autoComplete='off'
+                    value={props.searchText}
+                    onChange={props.handleSearch}
+                />
                 <button className='input-btn' onClick={props.addTodo}>Add Todo Item</button>
                 <button className='input-btn' onClick={props.clearCompleted}>Clear Completed</button>
             </form>
