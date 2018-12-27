@@ -61,6 +61,12 @@
     border-radius: 5px;
     padding: 10px 10px;
     margin: 10px 0;
+    background: black;
+    color: rgb(118, 255, 6);
+}
+
+.input-btn:hover {
+    color: white;
 }
 
 .form h2 {

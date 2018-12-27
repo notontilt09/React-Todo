@@ -9,7 +9,6 @@ const Todo = props => {
         >
             <h2>{props.taskItem.number}.</h2>
             <h3>{props.taskItem.task}</h3>
-             
         </div>
     )
 };
