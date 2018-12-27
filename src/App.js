@@ -69,6 +69,8 @@ class App extends React.Component {
 
   clearCompleted = event => {
     event.preventDefault();
+    // ***** Need to fix this so invoking clearCompleted with the button does
+    // ***** not remove all filtered items, just items that are completed
     this.setState({
       todo: this.state.todo.filter(task => !task.completed)
     }, () => localStorage.setItem('todo', JSON.stringify(this.state.todo)))
