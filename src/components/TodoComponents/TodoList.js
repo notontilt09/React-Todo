@@ -10,7 +10,7 @@ const TodoList = props => {
         <section className="todo-list">
             {props.list.map(taskItem => (
                 <Todo 
-                key={taskItem.task}
+                key={taskItem.id}
                 taskItem={taskItem} 
                 toggleCompleted={props.toggleCompleted}
                 />

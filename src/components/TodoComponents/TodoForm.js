@@ -10,7 +10,7 @@ const TodoForm = props => {
                     type="text"
                     name="inputText"
                     className="user-input"
-                    placeholder="Add new todo item"
+                    placeholder="Add new todo item..."
                     autoComplete='off'
                     value={props.inputText}
                     onChange={props.handleChange}
