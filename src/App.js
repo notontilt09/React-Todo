@@ -3,33 +3,7 @@ import TodoList from './components/TodoComponents/TodoList'
 import TodoForm from './components/TodoComponents/TodoForm'
 import './App.css'
 
-const todoData = [
-  {
-    task: 'Laundry',
-    id: Date.now(),
-    completed: false
-  },
-  {
-    task: 'Dishes',
-    id: Date.now(),
-    completed: false
-  },
-  {
-    task: 'Cleaning',
-    id: Date.now(),
-    completed: false
-  },
-  {
-    task: 'Cooking',
-    id: Date.now(),
-    completed: false
-  },
-  {
-    task: 'Learn React',
-    id: Date.now(),
-    completed: false
-  },
-];
+const todoData = [];
 
 
 
@@ -53,20 +27,40 @@ class App extends React.Component {
 
   addTodo = event => {
     event.preventDefault();
+    if (this.state.inputText) {
+      this.setState({
+        todo: [...this.state.todo, {task: this.state.inputText, id: Date.now(), completed: false}],
+        inputText: ''
+      });
+    };
+  };
+
+  toggleCompleted = id => {
     this.setState({
-      todo: [...this.state.todo, {task: this.state.inputText, id: Date.now(), completed: false}],
-      inputText: ''
+      todo: this.state.todo.map(task => {
+        if (task.id === id) {
+          return {
+            ...task,
+          completed: !task.completed ? true : false
+          };
+        } else {
+          return task;
+        }
+      })
     });
   };
 
   clearCompleted = event => {
     event.preventDefault();
+    this.setState({
+      todo: this.state.todo.filter(task => !task.completed)
+    })
   }
 
   render() {
     return (
       <div className="App">
-        <TodoList list={this.state.todo} />
+        <TodoList list={this.state.todo} toggleCompleted={this.toggleCompleted}/>
         <TodoForm 
         inputText={this.state.inputText} 
         handleChange={this.handleChange}
