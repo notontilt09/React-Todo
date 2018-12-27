@@ -42,7 +42,6 @@
 }
 
 
-
 .user-input {
     width: 100%;
     font-size: 24px;
@@ -57,6 +56,12 @@
     margin: 10px 0;
     border-radius: 5px;
     padding-left: 10px;
+    background: darkslategrey;
+    color: white;
+}
+
+.search::placeholder {
+    color: white;
 }
 
 .user-input::placeholder {
@@ -66,6 +71,7 @@
 .input-btn {
     width: 40%;
     font-size: 16px;
+    font-weight: bold;
     border-radius: 5px;
     padding: 10px 10px;
     margin: 10px 0;

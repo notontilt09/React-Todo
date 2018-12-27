@@ -19,7 +19,7 @@ const TodoForm = props => {
                     type="text"
                     name="searchText"
                     className="search"
-                    placeholder="search items"
+                    placeholder="search items..."
                     autoComplete='off'
                     value={props.searchText}
                     onChange={props.handleSearch}

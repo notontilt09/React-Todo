@@ -35,15 +35,16 @@ class App extends React.Component {
     this.setState({
       searchText: event.target.value,
     });
-    this.filterTasks();
-  }
-
-  filterTasks = () => {
     this.setState( 
-      prevState => ({todo: prevState.todo.filter(task => task.task.indexOf(prevState.searchText) > -1)})
-    )
+      prevState => (
+        {todo: prevState.todo.filter(task => task.task.toLowerCase().indexOf(prevState.searchText.toLowerCase()) > -1)}
+      )
+    );
     this.updateNumbers();
-  }
+  };
+
+
+ 
 
   addTodo = event => {
     event.preventDefault();
