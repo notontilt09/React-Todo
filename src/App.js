@@ -3,7 +3,6 @@ import TodoList from './components/TodoComponents/TodoList'
 import TodoForm from './components/TodoComponents/TodoForm'
 import './App.css'
 
-const todoData = [];
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -12,7 +11,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todo: todoData,
+      todo:  localStorage.getItem('todo') === null ? [] : JSON.parse(localStorage.getItem('todo')),
       inputText: '',
       searchText: ''
     };
@@ -23,7 +22,7 @@ class App extends React.Component {
       prevState => ({todo: prevState.todo.map(task => {
         return {...task, number: prevState.todo.indexOf(task) + 1}})
       })
-  )}
+  )};
 
   handleChange = event => {
     this.setState({
@@ -36,23 +35,23 @@ class App extends React.Component {
       searchText: event.target.value,
     });
     this.setState( 
-      prevState => (
-        {todo: prevState.todo.filter(task => task.task.toLowerCase().indexOf(prevState.searchText.toLowerCase()) > -1)}
-      )
+      // prevState => (
+      //   // {todo: prevState.todo.filter(task => task.task.toLowerCase().indexOf(prevState.searchText.toLowerCase()) > -1)}
+      // )
+        prevState => (
+          {todo: JSON.parse(localStorage.getItem('todo')).filter(task => task.task.toLowerCase().indexOf(prevState.searchText.toLowerCase()) > -1)}
+        )
     );
     this.updateNumbers();
   };
 
-
- 
-
   addTodo = event => {
     event.preventDefault();
-    if (this.state.inputText) {
+    if (this.state.inputText !== '') {
       this.setState({
         todo: [...this.state.todo, {task: this.state.inputText, id: Date.now(), completed: false, number: this.state.todo.length + 1}],
         inputText: ''
-      });
+      }, () => localStorage.setItem('todo', JSON.stringify(this.state.todo)));
     };
   };
 
@@ -68,14 +67,14 @@ class App extends React.Component {
           return task;
         }
       })
-    });
+    }, () => localStorage.setItem('todo', JSON.stringify(this.state.todo)));
   };
 
   clearCompleted = event => {
     event.preventDefault();
-    this.setState(
-      prevState => ({todo: prevState.todo.filter(task => !task.completed)})
-    )
+    this.setState({
+      todo: this.state.todo.filter(task => !task.completed)
+    }, () => localStorage.setItem('todo', JSON.stringify(this.state.todo)))
     this.updateNumbers();
   }
 
