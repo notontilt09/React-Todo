@@ -35,11 +35,8 @@ class App extends React.Component {
       searchText: event.target.value,
     });
     this.setState( 
-      // prevState => (
-      //   // {todo: prevState.todo.filter(task => task.task.toLowerCase().indexOf(prevState.searchText.toLowerCase()) > -1)}
-      // )
         prevState => (
-          {todo: JSON.parse(localStorage.getItem('todo')).filter(task => task.task.toLowerCase().indexOf(prevState.searchText.toLowerCase()) > -1)}
+          {todo: localStorage.getItem('todo') === null ? [] : JSON.parse(localStorage.getItem('todo')).filter(task => task.task.toLowerCase().indexOf(prevState.searchText.toLowerCase()) > -1)}
         )
     );
     this.updateNumbers();
