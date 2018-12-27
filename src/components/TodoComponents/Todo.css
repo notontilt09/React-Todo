@@ -4,8 +4,7 @@
     border-radius: 5px;
     margin: 5px auto;
     font-size: 30px;
-    background: white;
-    color: black;
+    background: rgb(47, 43, 43);
     display: flex;
     justify-content: flex-start;
     padding-left: 10px;
@@ -15,13 +14,13 @@
     padding-left: 10px;
 }
 
-.task-item.true h3 {
+.task-item.true {
     text-decoration: line-through;
-    color: darkred;
+    color: #d06c6c;
 }
 
 .task-item.false h3 {
-    color: green;
+    color: cyan;
 }
 
 .todo-list {
@@ -30,14 +29,13 @@
 
 .task-item h2 {
     font-size: 24px;
-    color: black;
+    color: white;
     font-weight: bold;
     margin: 5px;
 }
 
 .task-item h3 {
     font-size: 24px;
-    color: darkred;
     margin: 5px;
 }
 
@@ -56,7 +54,7 @@
     margin: 10px 0;
     border-radius: 5px;
     padding-left: 10px;
-    background: darkslategrey;
+    background: #5fb5b5;
     color: white;
 }
 
@@ -75,11 +73,15 @@
     border-radius: 5px;
     padding: 10px 10px;
     margin: 10px 0;
-    background: black;
-    color: rgb(118, 255, 6);
 }
 
-.input-btn:hover {
+.input-btn.add {
+    background: #d06c6c;
+    color: white;
+}
+
+.input-btn.clear {
+    background: #6271b3;
     color: white;
 }
 

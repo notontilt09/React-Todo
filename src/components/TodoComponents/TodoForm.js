@@ -24,8 +24,8 @@ const TodoForm = props => {
                     value={props.searchText}
                     onChange={props.handleSearch}
                 />
-                <button className='input-btn' onClick={props.addTodo}>Add Todo Item</button>
-                <button className='input-btn' onClick={props.clearCompleted}>Clear Completed</button>
+                <button className='input-btn add' onClick={props.addTodo}>Add Todo Item</button>
+                <button className='input-btn clear' onClick={props.clearCompleted}>Clear Completed</button>
             </form>
         </div>
     );
