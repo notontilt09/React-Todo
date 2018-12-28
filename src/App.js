@@ -17,6 +17,10 @@ class App extends React.Component {
     };
   };
 
+  // each created todo will have a number attached to it for listing the todo's in order.  When
+  // the state is changed and the numbers are no longer sequential, updateNumbers will set the state
+  // of the numbers key to once again be sequential.  Thus todo's will always be listed starting at 1
+  // and counting up to the length of the todo array.
   updateNumbers = () => {
     this.setState(
       prevState => ({todo: prevState.todo.map(task => {
@@ -24,24 +28,29 @@ class App extends React.Component {
       })
   )};
 
+  // pass handleChange to add item form input to update inputText prop to whatever the user enters
   handleChange = event => {
     this.setState({
       inputText: event.target.value
     });
   };
 
+  // pass handleSearch to search items form input to filter the todo's matching search input
   handleSearch = event => {
     this.setState({
       searchText: event.target.value,
     });
     this.setState( 
         prevState => (
-          {todo: localStorage.getItem('todo') === null ? [] : JSON.parse(localStorage.getItem('todo')).filter(task => task.task.toLowerCase().indexOf(prevState.searchText.toLowerCase()) > -1)}
+          {todo: localStorage.getItem('todo') === null ? [] : 
+            JSON.parse(localStorage.getItem('todo')).filter(task => 
+              task.task.toLowerCase().indexOf(prevState.searchText.toLowerCase()) > -1)}
         )
     );
     this.updateNumbers();
   };
 
+  // add a todo item to the TodoList component
   addTodo = event => {
     event.preventDefault();
     if (this.state.inputText !== '') {
@@ -52,6 +61,7 @@ class App extends React.Component {
     };
   };
 
+  // allow user to click a task and change it's state.completed to the opposite boolean
   toggleCompleted = id => {
     this.setState({
       todo: this.state.todo.map(task => {
@@ -67,6 +77,7 @@ class App extends React.Component {
     }, () => localStorage.setItem('todo', JSON.stringify(this.state.todo)));
   };
 
+  // remove all todo's from the state which have the completed key set to true
   clearCompleted = event => {
     event.preventDefault();
     // ***** Need to fix this so invoking clearCompleted with the button does

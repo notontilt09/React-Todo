@@ -8,6 +8,7 @@ import './Todo.css'
 const TodoList = props => {
     return (
         <section className="todo-list">
+        {/* for each item in the state.todo create a new Todo component */}
             {props.list.map(taskItem => (
                 <Todo 
                 key={taskItem.id}
