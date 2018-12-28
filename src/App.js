@@ -35,14 +35,6 @@ class App extends React.Component {
     });
   };
 
-  searchHelper = () => {
-    const tasks = document.querySelectorAll('.task-item');
-    const tasksArray = Array.from(tasks);
-    const matching = tasksArray.filter(task => task.textContent.toLowerCase().indexOf(this.state.searchText.toLowerCase()) > -1);
-    console.log(matching);
-  
-  }
-
   // pass handleSearch to search items form input to filter the todo's matching search input
   handleSearch = event => {
     this.setState({
@@ -53,9 +45,14 @@ class App extends React.Component {
     });
   };
 
+  // filterSearch method to hide or show task items if the contain the user search input
   filterSearch = () => {
+    // grab all tasks
     const tasks = document.querySelectorAll('.task-item');
+    // turn nodeList into array to used array methods
     const tasksArray = Array.from(tasks);
+    // loop through tasks and add 'hide' class if they don't contain user searchText
+    // remove that class if they were previously hidden, but contain current searchText
     tasksArray.forEach(task => {
       if (task.textContent.indexOf(this.state.searchText) === -1) {
         task.classList.add('hide');
