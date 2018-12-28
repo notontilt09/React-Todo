@@ -35,20 +35,35 @@ class App extends React.Component {
     });
   };
 
+  searchHelper = () => {
+    const tasks = document.querySelectorAll('.task-item');
+    const tasksArray = Array.from(tasks);
+    const matching = tasksArray.filter(task => task.textContent.toLowerCase().indexOf(this.state.searchText.toLowerCase()) > -1);
+    console.log(matching);
+  
+  }
+
   // pass handleSearch to search items form input to filter the todo's matching search input
   handleSearch = event => {
     this.setState({
       searchText: event.target.value,
+    }, () => { 
+      this.filterSearch();
+      this.updateNumbers();
     });
-    this.setState( 
-        prevState => (
-          {todo: localStorage.getItem('todo') === null ? [] : 
-            JSON.parse(localStorage.getItem('todo')).filter(task => 
-              task.task.toLowerCase().indexOf(prevState.searchText.toLowerCase()) > -1)}
-        )
-    );
-    this.updateNumbers();
   };
+
+  filterSearch = () => {
+    const tasks = document.querySelectorAll('.task-item');
+    const tasksArray = Array.from(tasks);
+    tasksArray.forEach(task => {
+      if (task.textContent.indexOf(this.state.searchText) === -1) {
+        task.classList.add('hide');
+      } else {
+        task.classList.remove('hide');
+      }
+    })
+  }
 
   // add a todo item to the TodoList component
   addTodo = event => {
