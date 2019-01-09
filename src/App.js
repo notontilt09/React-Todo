@@ -67,7 +67,12 @@ class App extends React.Component {
     event.preventDefault();
     if (this.state.inputText !== '') {
       this.setState({
-        todo: [...this.state.todo, {task: this.state.inputText, id: Date.now(), completed: false, number: this.state.todo.length + 1}],
+        todo: [...this.state.todo, {
+          task: this.state.inputText, 
+          id: Date.now(), 
+          completed: false, 
+          number: this.state.todo.length + 1}
+        ],
         inputText: ''
       }, () => localStorage.setItem('todo', JSON.stringify(this.state.todo)));
     };
@@ -92,8 +97,6 @@ class App extends React.Component {
   // remove all todo's from the state which have the completed key set to true
   clearCompleted = event => {
     event.preventDefault();
-    // ***** Need to fix this so invoking clearCompleted with the button does
-    // ***** not remove all filtered items, just items that are completed
     this.setState({
       todo: this.state.todo.filter(task => !task.completed)
     }, () => localStorage.setItem('todo', JSON.stringify(this.state.todo)))
