@@ -135,3 +135,24 @@ form {
     opacity: 1;
     cursor: pointer;
 }
+
+.bottom {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 30px;
+}
+
+.remaining {
+    color: coral;
+}
+
+.delete-all {
+    width: 40%;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 10px 10px;
+    margin: 10px 0;
+    background: rgb(94, 189, 94);
+    color: white;
+}

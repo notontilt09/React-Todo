@@ -115,6 +115,14 @@ class App extends React.Component {
       this.updateNumbers()
   })
 }
+
+  deleteAll = () => {
+    const todo = [];
+    this.setState({
+      todo: todo
+    }, () => localStorage.setItem('todo', JSON.stringify(this.state.todo)));
+  }
+
   
 
 
@@ -134,7 +142,7 @@ class App extends React.Component {
           toggleCompleted={this.toggleCompleted}
           removeTodo={this.removeTodo}
         />
-        <LeftToDo todo={this.state.todo}/>
+        {this.state.todo.length > 0 ? <LeftToDo todo={this.state.todo} deleteAll={this.deleteAll} /> : null}
       </div>
     );
   }
