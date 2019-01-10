@@ -5,10 +5,19 @@ const Todo = props => {
     return (
         <div 
             className={`task-item ${props.taskItem.completed}`}
-            onClick={() => props.toggleCompleted(props.taskItem.id)}
+            onDoubleClick={() => props.turnWhite(props.taskItem.id)}
         >
+            <div 
+                className={`checkbox ${props.taskItem.completed}`}
+                onClick={() => props.toggleCompleted(props.taskItem.id)}
+                >
+            </div>
             <h2>{props.taskItem.number}.</h2>
             <h3>{props.taskItem.task}</h3>
+            <h4 
+                onClick={() => props.removeTodo(props.taskItem.id)}
+                className="remove">&#10006;
+            </h4>
         </div>
     )
 };

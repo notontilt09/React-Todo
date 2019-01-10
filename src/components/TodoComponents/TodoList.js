@@ -9,11 +9,13 @@ const TodoList = props => {
     return (
         <section className="todo-list">
         {/* for each item in the state.todo create a new Todo component */}
-            {props.list.map(taskItem => (
+            {props.todo.map(taskItem => (
                 <Todo 
                 key={taskItem.id}
+                id={taskItem.id}
                 taskItem={taskItem} 
                 toggleCompleted={props.toggleCompleted}
+                removeTodo={props.removeTodo}
                 />
             ))}
         </section>

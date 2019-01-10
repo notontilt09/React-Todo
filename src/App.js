@@ -71,27 +71,13 @@ class App extends React.Component {
           task: this.state.inputText, 
           id: Date.now(), 
           completed: false, 
-          number: this.state.todo.length + 1}
+          number: this.state.todo.length + 1,
+          editing: false
+        }
         ],
         inputText: ''
       }, () => localStorage.setItem('todo', JSON.stringify(this.state.todo)));
     };
-  };
-
-  // allow user to click a task and change it's state.completed to the opposite boolean
-  toggleCompleted = id => {
-    this.setState({
-      todo: this.state.todo.map(task => {
-        if (task.id === id) {
-          return {
-            ...task,
-          completed: !task.completed ? true : false
-          };
-        } else {
-          return task;
-        }
-      })
-    }, () => localStorage.setItem('todo', JSON.stringify(this.state.todo)));
   };
 
   // remove all todo's from the state which have the completed key set to true
@@ -102,6 +88,34 @@ class App extends React.Component {
     }, () => localStorage.setItem('todo', JSON.stringify(this.state.todo)))
     this.updateNumbers();
   }
+
+    // allow user to click a task and change it's state.completed to the opposite boolean
+    toggleCompleted = id => {
+      this.setState({
+        todo: this.state.todo.map(task => {
+          if (task.id === id) {
+            return {
+              ...task,
+            completed: !task.completed ? true : false
+            };
+          } else {
+            return task;
+          }
+        })
+      }, () => localStorage.setItem('todo', JSON.stringify(this.state.todo)));
+    };
+
+  removeTodo = id => {
+    const todo = this.state.todo.filter(todo => todo.id !== id);
+    this.setState({
+      todo: todo
+    },() => {
+      localStorage.setItem('todo', JSON.stringify(this.state.todo));
+      this.updateNumbers()
+  })
+}
+  
+
 
   render() {
     return (
@@ -114,7 +128,11 @@ class App extends React.Component {
         handleSearch={this.handleSearch}
         searchText={this.searchText}
         />
-        <TodoList list={this.state.todo} toggleCompleted={this.toggleCompleted}/>
+        <TodoList 
+          todo={this.state.todo} 
+          toggleCompleted={this.toggleCompleted}
+          removeTodo={this.removeTodo}
+        />
       </div>
     );
   }

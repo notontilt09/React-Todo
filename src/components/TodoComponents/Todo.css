@@ -7,14 +7,11 @@
     background: rgb(47, 43, 43);
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    align-items: center;
+    padding-left: 5px;
 }
 
-.task-item h3 {
-    padding-left: 10px;
-}
-
-.task-item.true {
+.task-item.true h3 {
     text-decoration: line-through;
     color: #d06c6c;
 }
@@ -32,6 +29,7 @@
     color: white;
     font-weight: bold;
     margin: 5px;
+    padding-left: 10px;
 }
 
 .task-item h3 {
@@ -103,4 +101,37 @@ form {
 
 .show {
     display: flex;
+}
+
+.checkbox {
+    border: 1px solid white;
+    border-radius: 20px;
+    width: 30px;
+    height: 30px;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.checkbox:hover {
+    cursor: pointer;
+}
+
+.checkbox.true {
+    background-image: url('https://img.icons8.com/color/48/000000/checked.png');
+    background-size: 100% 100%;
+}
+
+.remove {
+    color: red;
+    opacity: .5;
+    margin-left: auto;
+    padding-right: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.remove:hover {
+    opacity: 1;
+    cursor: pointer;
 }
