@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoList from './components/TodoComponents/TodoList'
 import TodoForm from './components/TodoComponents/TodoForm'
+import LeftToDo from './components/TodoComponents/LeftToDo'
 import './App.css'
 
 
@@ -133,6 +134,7 @@ class App extends React.Component {
           toggleCompleted={this.toggleCompleted}
           removeTodo={this.removeTodo}
         />
+        <LeftToDo todo={this.state.todo}/>
       </div>
     );
   }

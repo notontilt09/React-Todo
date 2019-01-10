@@ -5,7 +5,6 @@ const Todo = props => {
     return (
         <div 
             className={`task-item ${props.taskItem.completed}`}
-            onDoubleClick={() => props.turnWhite(props.taskItem.id)}
         >
             <div 
                 className={`checkbox ${props.taskItem.completed}`}
