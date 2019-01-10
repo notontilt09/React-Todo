@@ -78,9 +78,17 @@
     color: white;
 }
 
+.input-btn.add:hover {
+    background: #7e0101;
+}
+
 .input-btn.clear {
     background: #6271b3;
     color: white;
+}
+
+.input-btn.clear:hover {
+    background: #071b74;
 }
 
 .form h2 {
@@ -155,4 +163,8 @@ form {
     margin: 10px 0;
     background: rgb(94, 189, 94);
     color: white;
+}
+
+.delete-all:hover {
+    background: red;
 }

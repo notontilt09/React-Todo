@@ -18,6 +18,7 @@ class App extends React.Component {
     };
   };
 
+
   // each created todo will have a number attached to it for listing the todo's in order.  When
   // the state is changed and the numbers are no longer sequential, updateNumbers will set the state
   // of the numbers key to once again be sequential.  Thus todo's will always be listed starting at 1
@@ -91,20 +92,20 @@ class App extends React.Component {
   }
 
     // allow user to click a task and change it's state.completed to the opposite boolean
-    toggleCompleted = id => {
-      this.setState({
-        todo: this.state.todo.map(task => {
-          if (task.id === id) {
-            return {
-              ...task,
-            completed: !task.completed ? true : false
-            };
-          } else {
-            return task;
-          }
-        })
-      }, () => localStorage.setItem('todo', JSON.stringify(this.state.todo)));
-    };
+  toggleCompleted = id => {
+    this.setState({
+      todo: this.state.todo.map(task => {
+        if (task.id === id) {
+          return {
+            ...task,
+          completed: !task.completed ? true : false
+          };
+        } else {
+          return task;
+        }
+      })
+    }, () => localStorage.setItem('todo', JSON.stringify(this.state.todo)));
+  };
 
   removeTodo = id => {
     const todo = this.state.todo.filter(todo => todo.id !== id);
@@ -113,8 +114,8 @@ class App extends React.Component {
     },() => {
       localStorage.setItem('todo', JSON.stringify(this.state.todo));
       this.updateNumbers()
-  })
-}
+    })
+  }
 
   deleteAll = () => {
     const todo = [];
